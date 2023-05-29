@@ -1,0 +1,38 @@
+<div class="container" >
+  <div class="row">
+    <div class="col" style="max-width: 640px;">
+      <h1 class="text-center-sm text-right-lg mt-4 mb-4"> <%= formatted_note_count(@pagy.count) %> </h1>
+    </div>
+  </div>
+  <div class="row" data-controller="tooltip">
+    <div class="col">
+      <div class="table-responsive" style="min-width: 300px; max-width: 640px;">
+        <table class="table">
+          <thead>
+          <tr>
+            <th style="width: 20px">#</th>
+            <th>Note text</th>
+            <th style="width: 80px">Author name</th>
+            <th style="width: 120px">Create date</th>
+            <th style="width: 20px"></th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @notes.each.with_index(@pagy.offset + 1) do |note, line_number| %>
+              <%= render 'note', { note: note, line_number: line_number } %>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <%= render 'form' %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+</div>

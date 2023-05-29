@@ -1,0 +1,14 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@media (min-width: 860px) {
+  .text-right-lg {
+    text-align: right;
+  }
+}
+
+@media (max-width: 860px) {
+  .text-center-sm {
+    text-align: center;
+  }
+}

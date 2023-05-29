@@ -1,0 +1,21 @@
+<tr>
+  <td><%= line_number %></td>
+  <td><%= note.content %></td>
+  <td data-bs-toggle="tooltip" data-bs-placement="top" title="<%= note.user.fullname %>">
+    <%= note.user.name %>
+  </td>
+  <td data-bs-toggle="tooltip" data-bs-placement="top" title="<%= formatted_time(note.created_at) %>">
+    <%= formatted_date(note.created_at) %>
+  </td>
+  <td>
+    <% if authored_by_current_user?(note) %>
+      <%= link_to note_path(note), class: "delete-note",
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+    <% else %>
+      <i class="bi bi-x-circle text-decoration-line-through" data-bs-toggle="tooltip" data-bs-placement="top"
+         title="You can delete only your own note"></i>
+    <% end %>
+  </td>
+</tr>

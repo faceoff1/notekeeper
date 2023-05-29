@@ -1,0 +1,11 @@
+<tr>
+  <td></td>
+  <td colspan="3">
+    <%= form_with model: Note.new, url: notes_path,
+                  data: { controller: 'note-form', 'note-form-target': 'form' } do |form| %>
+      <%= form.text_field :content, class: "form-control", placeholder: "WRITE A NEW NOTE", required: true,
+                          data: { action: 'change->note-form#submit keydown->note-form#preventEnterSubmit' }%>
+    <% end %>
+  </td>
+  <td></td>
+</tr>
